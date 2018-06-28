@@ -35,7 +35,11 @@ static id MagicalRecordUbiquitySetupNotificationObserver;
         NSManagedObjectContext *defaultContext = [self MR_newMainQueueContext];
         [self MR_setDefaultContext:defaultContext];
 
-        [defaultContext setParentContext:rootContext];
+        if(rootContext != nil){
+            [defaultContext setParentContext:rootContext];
+        }else{
+            NSLog(@"Cannot set parent context for defaultContext");
+        }
     }
 }
 
